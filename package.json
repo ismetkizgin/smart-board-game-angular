@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run build & ng serve --configuration=production --host 0.0.0.0",
+    "start:dev": "ng serve",
+    "start:heroku": "node serve.js",
+    "heroku-postbuild": "ng build --prod",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -23,9 +26,10 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
-    "boostrap": "^2.0.0",
     "bootstrap": "^4.5.3",
+    "express": "^4.17.1",
     "flag-icon-css": "^3.5.0",
+    "path": "^0.12.7",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
