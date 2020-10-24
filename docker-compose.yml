@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  example:
+    container_name: smart-board-game
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - '4201:4200'
