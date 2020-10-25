@@ -1,0 +1,13 @@
+<div class="row w-100 background-table">
+    <div class="col-12 col-lg-9">
+        <table class="table border" class=" m-auto">
+            <tr class="bg-white  {{box.name}}" *ngFor="let box of tahta">
+                <td class="border" *ngFor="let box of tahta"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-12 col-lg-3 p-2">
+        <input class="ml-2"type="text" [(ngModel)]="tahtaSize">
+        <button class="ml-2" (click)="createTable(tahtaSize)">Oluştur</button>
+    </div>
+</div>

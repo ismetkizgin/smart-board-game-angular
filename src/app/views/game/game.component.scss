@@ -1,0 +1,18 @@
+tr{
+    height: 70px;
+}
+table{
+    width: 65%;
+}
+tr.siyah>td:nth-child(odd){
+    height: auto;
+    background-color: black;
+}
+tr.beyaz>td:nth-child(even){
+    height: auto;
+    background-color: black;
+}
+.background-table{
+    min-height: 630px;
+    background-image: url("../../../background.jpg");
+}
