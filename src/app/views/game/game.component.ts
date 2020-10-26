@@ -31,13 +31,12 @@ export class GameComponent implements OnInit {
     for (let i = 0; i < this.boardSize; i++) {
       document.getElementById(`box${i}`).classList.remove('board__box__green');
     }
-    console.log(this.selectBoxID);
     const selectBox: any = document.getElementById(`box${boxID}`);
     if (selectBox.getElementsByTagName('span').length) {
       if (
         boxID + 1 >= 0 &&
         boxID + 1 < this.boardSize &&
-        boxID % this.boardHorizontalSize.length != 4
+        boxID % this.boardHorizontalSize.length != this.boardHorizontalSize.length - 1
       )
         document
           .getElementById(`box${boxID + 1}`)
@@ -53,7 +52,7 @@ export class GameComponent implements OnInit {
           .classList.add('board__box__green');
 
       if (
-        boxID - this.boardVerticalSize.length > 0 &&
+        boxID - this.boardVerticalSize.length >= 0 &&
         boxID - this.boardVerticalSize.length < this.boardSize
       )
         document
@@ -61,7 +60,7 @@ export class GameComponent implements OnInit {
           .classList.add('board__box__green');
 
       if (
-        boxID + this.boardVerticalSize.length > 0 &&
+        boxID + this.boardVerticalSize.length >= 0 &&
         boxID + this.boardVerticalSize.length < this.boardSize
       )
         document
@@ -69,8 +68,16 @@ export class GameComponent implements OnInit {
           .classList.add('board__box__green');
 
       this.selectBoxID = boxID;
-    } else if (this.selectBoxID) {
-      console.log('else');
+    } else if (
+      this.selectBoxID != null &&
+      (this.selectBoxID + this.boardVerticalSize.length == boxID ||
+        this.selectBoxID - this.boardVerticalSize.length == boxID ||
+        this.selectBoxID + 1 == boxID ||
+        this.selectBoxID - 1 == boxID)
+    ) {
+      selectBox.innerHTML = document.getElementById(`box${this.selectBoxID}`).innerHTML;
+      document.getElementById(`box${this.selectBoxID}`).innerHTML = null;
+      this.selectBoxID = null;
     } else {
       this.selectBoxID = null;
     }
