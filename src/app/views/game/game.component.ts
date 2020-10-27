@@ -15,11 +15,11 @@ export class GameComponent implements OnInit {
   stonePositions: Array<number> = [0, 12];
   boardSize: number;
   ngOnInit(): void {
-    this.boardVerticalSize = Array(5)
+    this.boardVerticalSize = Array(9)
       .fill(null)
       .map((x, i) => i);
 
-    this.boardHorizontalSize = Array(5)
+    this.boardHorizontalSize = Array(9)
       .fill(null)
       .map((x, i) => i);
     this.boardSize =
