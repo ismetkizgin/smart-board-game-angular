@@ -27,3 +27,17 @@
   background-image: url("../../../assets/image/background.jpg")!important;
   min-height: 100vh;
 }
+.bg-span{
+  background-image: url("../../../assets/image/Stone.png")!important;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media only screen and (max-width: 1000px) {
+  .bg-span {
+    background-size: 100%;
+  }
+}
