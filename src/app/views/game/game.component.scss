@@ -1,0 +1,43 @@
+.board {
+  border-style: solid;
+  border-width: 3px;
+  overflow: hidden;
+  &__box {
+    width: 15vw;
+    height: 10vh;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &__white {
+      background-color: white;
+    }
+
+    &__black {
+      background-color: black;
+    }
+
+    &__green{
+      background-color: green;
+    }
+  }
+}
+.row{
+  max-height: 8vw!important;
+}
+.bg-image{
+  background-image: url("../../../assets/image/background.jpg")!important;
+  min-height: 100vh;
+}
+.bg-span{
+  background-image: url("../../../assets/image/Stone.png")!important;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media only screen and (max-width: 1000px) {
+  .bg-span {
+    background-size: 100%;
+  }
+}

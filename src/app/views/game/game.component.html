@@ -1,0 +1,13 @@
+<div class="bg-image mt-0 pt-4">
+    <div class="container board">
+        <div class="row" *ngFor="let vertical of boardVerticalSize">
+            <div *ngFor="let horizontal of boardHorizontalSize"
+                id="box{{(vertical * boardVerticalSize.length + horizontal)}}"
+                class="col board__box board__box__{{ (vertical * boardVerticalSize.length + horizontal) % 2 == 0 ? 'white' : 'black' }}"
+                (click)="onSubmit((vertical * boardVerticalSize.length + horizontal))">
+                <span class="text-center text-white bg-span p-3"
+                    *ngIf="stonePositions.indexOf((vertical * boardVerticalSize.length + horizontal)) != -1"><span>4</span></span>
+            </div>
+        </div>
+    </div>
+</div>

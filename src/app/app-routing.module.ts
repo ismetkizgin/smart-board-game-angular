@@ -1,13 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomepageComponent,SelectionScreenComponent } from './views';
+import {
+  HomepageComponent,
+  GameComponent,
+  SelectionScreenComponent,
+} from './views';
 
 const routes: Routes = [
   {
-    path:'',component:HomepageComponent
+    path: 'game',
+    component: GameComponent,
   },
   {
-    path:'selections',component:SelectionScreenComponent
+    path: '',
+    component: HomepageComponent,
+  },
+  {
+    path: 'selections',
+    component: SelectionScreenComponent,
   },
 ];
 
@@ -15,5 +25,9 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
-export const routingComponents = [HomepageComponent, SelectionScreenComponent];
+export class AppRoutingModule {}
+export const routingComponents = [
+  HomepageComponent,
+  SelectionScreenComponent,
+  GameComponent,
+];
