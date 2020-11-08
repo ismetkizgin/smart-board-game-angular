@@ -4,16 +4,17 @@ import { LanguageService } from 'src/app/utils';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit {
+  constructor(private _languageService: LanguageService) {}
 
-  constructor(private _languageService:LanguageService) { }
+  selectionScreenShowHide = false;
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  selectionScreenToggle(event) {
+    if (event) {
+      this.selectionScreenShowHide = !this.selectionScreenShowHide;
+    }
   }
-  useLanguage(language: string) {
-    this._languageService.setLanguage(language);
-  }
-
 }

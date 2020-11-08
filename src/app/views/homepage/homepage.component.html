@@ -1,21 +1,6 @@
 <div class="row bg-body w-100">
     <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 m-auto">
-        <div class="row bg-menu p-3 pb-5">
-            <div class="bg-logo rounded-circle col-8 m-auto"></div>
-            <div class="col-12">
-                    <a class="btn btn-warning border w-100 mt-3" [routerLink]="['/selections']" ><i class="far fa-play-circle"></i> Single
-                        Player</a>
-                <button class="btn btn-warning border w-100 mt-3"><i class="fas fa-user-friends"></i> Two
-                    Players</button>
-            </div>
-            <div class="mx-auto d-inline mt-5">
-                <a (click)="useLanguage('tr')" class="mr-4">
-                    <i class="flag-icon flag-icon-tr homepage__langues__flag rounded-circle"></i>
-                </a>
-                <a (click)="useLanguage('en')">
-                    <i class="flag-icon flag-icon-us homepage__langues__flag rounded-circle"></i>
-                </a>
-            </div>
-        </div>
+        <app-splash-screen *ngIf="!selectionScreenShowHide" (selectionScreenToggle)="selectionScreenToggle($event)"></app-splash-screen>
+        <app-selection-screen *ngIf="selectionScreenShowHide"></app-selection-screen>
     </div>
 </div>

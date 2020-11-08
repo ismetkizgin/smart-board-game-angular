@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   HomepageComponent,
   GameComponent,
-  SelectionScreenComponent,
 } from './views';
 
 const routes: Routes = [
@@ -15,10 +14,6 @@ const routes: Routes = [
     path: '',
     component: HomepageComponent,
   },
-  {
-    path: 'selections',
-    component: SelectionScreenComponent,
-  },
 ];
 
 @NgModule({
@@ -28,6 +23,5 @@ const routes: Routes = [
 export class AppRoutingModule {}
 export const routingComponents = [
   HomepageComponent,
-  SelectionScreenComponent,
   GameComponent,
 ];
