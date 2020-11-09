@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { empty } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -8,26 +8,33 @@ import { empty } from 'rxjs';
   styleUrls: ['./game.component.scss'],
 })
 export class GameComponent implements OnInit {
-  constructor(@Inject(DOCUMENT) document) {}
+  constructor(private _activatedRoute: ActivatedRoute) {}
 
-  boardVerticalSize: Array<number>;
-  boardHorizontalSize: Array<number>;
-  stonePositions: Array<number> = [0, 12];
+  boardSizeArray: Array<number>;
+  stonePositions: Array<number>;
   boardSize: number;
   ngOnInit(): void {
-    this.boardVerticalSize = Array(8)
+    this.boardSize = parseInt(
+      this._activatedRoute.snapshot.paramMap.get('BoardSize')
+    );
+    const NumberOfStones = parseInt(
+      this._activatedRoute.snapshot.paramMap.get('NumberOfStones')
+    );
+    this.boardSizeArray = Array(this.boardSize)
       .fill(null)
       .map((x, i) => i);
 
-    this.boardHorizontalSize = Array(8)
-      .fill(null)
-      .map((x, i) => i);
+    this.stonePositions = this.randomStoneLaying(
+      NumberOfStones,
+      Math.pow(this.boardSize, 2)
+    );
+
     this.boardSize =
-      this.boardHorizontalSize.length * this.boardVerticalSize.length;
+      this.boardSizeArray.length * this.boardSizeArray.length;
   }
 
   selectBoxID: number = null;
-  onSubmit(boxID) {
+  onSubmit(boxID: number) {
     for (let i = 0; i < this.boardSize; i++) {
       document.getElementById(`box${i}`).classList.remove('board__box__green');
     }
@@ -37,13 +44,13 @@ export class GameComponent implements OnInit {
       this.selectBoxID = boxID;
     } else if (
       this.selectBoxID != null &&
-      (this.selectBoxID + this.boardVerticalSize.length == boxID ||
-        this.selectBoxID - this.boardVerticalSize.length == boxID ||
+      (this.selectBoxID + this.boardSizeArray.length == boxID ||
+        this.selectBoxID - this.boardSizeArray.length == boxID ||
         (this.selectBoxID + 1 == boxID &&
-          this.selectBoxID % this.boardHorizontalSize.length !=
-            this.boardHorizontalSize.length - 1) ||
+          this.selectBoxID % this.boardSizeArray.length !=
+            this.boardSizeArray.length - 1) ||
         (this.selectBoxID - 1 == boxID &&
-          this.selectBoxID % this.boardHorizontalSize.length != 0))
+          this.selectBoxID % this.boardSizeArray.length != 0))
     ) {
       selectBox.innerHTML = document.getElementById(
         `box${this.selectBoxID}`
@@ -55,12 +62,12 @@ export class GameComponent implements OnInit {
     }
   }
 
-  markPathOfMotion(boxID) {
+  markPathOfMotion(boxID: number) {
     if (
       boxID + 1 >= 0 &&
       boxID + 1 < this.boardSize &&
-      boxID % this.boardHorizontalSize.length !=
-        this.boardHorizontalSize.length - 1
+      boxID % this.boardSizeArray.length !=
+        this.boardSizeArray.length - 1
     )
       document
         .getElementById(`box${boxID + 1}`)
@@ -69,26 +76,37 @@ export class GameComponent implements OnInit {
     if (
       boxID - 1 >= 0 &&
       boxID - 1 < this.boardSize &&
-      boxID % this.boardHorizontalSize.length != 0
+      boxID % this.boardSizeArray.length != 0
     )
       document
         .getElementById(`box${boxID - 1}`)
         .classList.add('board__box__green');
 
     if (
-      boxID - this.boardVerticalSize.length >= 0 &&
-      boxID - this.boardVerticalSize.length < this.boardSize
+      boxID - this.boardSizeArray.length >= 0 &&
+      boxID - this.boardSizeArray.length < this.boardSize
     )
       document
-        .getElementById(`box${boxID - this.boardVerticalSize.length}`)
+        .getElementById(`box${boxID - this.boardSizeArray.length}`)
         .classList.add('board__box__green');
 
     if (
-      boxID + this.boardVerticalSize.length >= 0 &&
-      boxID + this.boardVerticalSize.length < this.boardSize
+      boxID + this.boardSizeArray.length >= 0 &&
+      boxID + this.boardSizeArray.length < this.boardSize
     )
       document
-        .getElementById(`box${boxID + this.boardVerticalSize.length}`)
+        .getElementById(`box${boxID + this.boardSizeArray.length}`)
         .classList.add('board__box__green');
+  }
+
+  randomStoneLaying(numberOfStones: number, maxLimit: number): Array<number> {
+    let stonePositions: Array<number> = [];
+    let randomNumber: number;
+    do {
+      randomNumber = Math.floor(Math.random() * maxLimit);
+      if (stonePositions.indexOf(randomNumber) === -1)
+        stonePositions.push(randomNumber);
+    } while (stonePositions.length != numberOfStones);
+    return stonePositions;
   }
 }

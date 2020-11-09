@@ -7,7 +7,7 @@ import {
 
 const routes: Routes = [
   {
-    path: 'game',
+    path: 'game/:BoardSize/:NumberOfStones',
     component: GameComponent,
   },
   {

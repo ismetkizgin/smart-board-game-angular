@@ -1,22 +1,29 @@
 <div class="m-auto bg-color shadow-lg p-3">
     <div class="row w-100 m-auto pl-3">
-        <div class="btn btnSelection">
-            <i class="fas fa-bahai"></i>
-            <p><a>{{ 'Easy' | translate }}</a></p>
-        </div>
-        <div class="btn ml-1 btnSelection">
-            <i class="fas fa-angry"></i>
-            <p><a>{{ 'Medium' | translate }}</a></p>
-        </div>
-        <div class="btn ml-1 btnSelection">
-            <i class="fas fa-biohazard "></i>
-            <p><a>{{ 'Hard' | translate }}</a></p>
-        </div>
-        <div class="btn ml-1 btnSelection">
-            <a (click)="creativeFormToggle()"> <i class="fas fa-plus-circle"></i>
+        <a [routerLink]="[ '/game/5/3']">
+            <div class="btn btnSelection">
+                <i class="fas fa-bahai"></i>
+                <p>{{ 'Easy' | translate }}</p>
+            </div>
+        </a>
+        <a [routerLink]="[ '/game/7/5']">
+            <div class="btn ml-1 btnSelection">
+                <i class="fas fa-angry"></i>
+                <p>{{ 'Medium' | translate }}</p>
+            </div>
+        </a>
+        <a [routerLink]="[ '/game/9/10']">
+            <div class="btn ml-1 btnSelection">
+                <i class="fas fa-biohazard "></i>
+                <p>{{ 'Hard' | translate }}</p>
+            </div>
+        </a>
+        <a (click)="creativeFormToggle()">
+            <div class="btn ml-1 btnSelection">
+                <i class="fas fa-plus-circle"></i>
                 <p>{{ 'Creative' | translate }}</p>
-            </a>
-        </div>
+            </div>
+        </a>
     </div>
     <div class="pt-3">
         <form *ngIf="creativeFormShowHide">
@@ -26,9 +33,11 @@
                         <mat-label>{{ 'Board Size' | translate }}</mat-label>
                         <select matNativeControl name="BoardSize" #BoardSize="ngModel" [(ngModel)]="_model.BoardSize"
                             required>
-                            <option>5x5</option>
-                            <option>7x7</option>
-                            <option>9x9</option>
+                            <option value="5">5x5</option>
+                            <option value="6">6x6</option>
+                            <option value="7">7x7</option>
+                            <option value="8">8x8</option>
+                            <option value="9">9x9</option>
                         </select>
                         <mat-error *ngIf="BoardSize.invalid&&BoardSize.touched">
                             {{ 'Choose board size' | translate }}
