@@ -1,13 +1,27 @@
 <div class="bg-image mt-0 pt-4">
     <div class="container board">
-        <div class="row" *ngFor="let vertical of boardVerticalSize">
-            <div *ngFor="let horizontal of boardHorizontalSize"
-                id="box{{(vertical * boardVerticalSize.length + horizontal)}}"
-                class="col board__box board__box__{{ (vertical * boardVerticalSize.length + horizontal) % 2 == 0 ? 'white' : 'black' }}"
-                (click)="onSubmit((vertical * boardVerticalSize.length + horizontal))">
-                <span class="text-center text-white bg-span p-3"
-                    *ngIf="stonePositions.indexOf((vertical * boardVerticalSize.length + horizontal)) != -1"><span>4</span></span>
+        <ng-container *ngIf="boardVerticalSize.length % 2 == 0; then evenNumber else oddNumber"></ng-container>
+        <ng-template #oddNumber>
+            <div class="row" *ngFor="let vertical of boardVerticalSize">
+                <div *ngFor="let horizontal of boardHorizontalSize"
+                    id="box{{(vertical * boardVerticalSize.length + horizontal)}}"
+                    class="col board__box board__box__{{ (vertical * boardVerticalSize.length + horizontal) % 2 == 0 ? 'white' : 'black' }}"
+                    (click)="onSubmit((vertical * boardVerticalSize.length + horizontal))">
+                    <span class="text-center text-white bg-span p-3"
+                        *ngIf="stonePositions.indexOf((vertical * boardVerticalSize.length + horizontal)) != -1"><span>4</span></span>
+                </div>
             </div>
-        </div>
+        </ng-template>
+        <ng-template #evenNumber>
+            <div class="row" *ngFor="let vertical of boardVerticalSize">
+                <div *ngFor="let horizontal of boardHorizontalSize"
+                    id="box{{(vertical * boardVerticalSize.length + horizontal)}}"
+                    [ngClass]="{'col board__box': true, 'board__box__white': (vertical % 2 == 0 && horizontal % 2 == 0) || (vertical % 2 == 1 && horizontal % 2 == 1), 'board__box__black': (vertical % 2 == 0 && horizontal % 2 == 1) || (vertical % 2 ==  1 && horizontal % 2 == 0) }"
+                    (click)="onSubmit((vertical * boardVerticalSize.length + horizontal))">
+                    <span class="text-center text-white bg-span p-3"
+                        *ngIf="stonePositions.indexOf((vertical * boardVerticalSize.length + horizontal)) != -1"><span>4</span></span>
+                </div>
+            </div>
+        </ng-template>
     </div>
 </div>
