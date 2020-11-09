@@ -9,6 +9,11 @@ import { Board } from 'src/app/models';
 export class SelectionScreenComponent implements OnInit {
   constructor() {}
   _model: Board = new Board();
+  creativeFormShowHide: boolean = false;
 
   ngOnInit(): void {}
+
+  creativeFormToggle(){
+    this.creativeFormShowHide = !this.creativeFormShowHide;
+  }
 }
