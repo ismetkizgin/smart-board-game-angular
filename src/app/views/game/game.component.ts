@@ -15,11 +15,13 @@ export class GameComponent implements OnInit {
   onSubmit: Function = this.mainStoneSelection;
   mainStone: number;
   selectBoxID: number;
+  numberOfStones: number;
+
   ngOnInit(): void {
     this.boardSize = parseInt(
       this._activatedRoute.snapshot.paramMap.get('BoardSize')
     );
-    const NumberOfStones = parseInt(
+    this.numberOfStones = parseInt(
       this._activatedRoute.snapshot.paramMap.get('NumberOfStones')
     );
     this.boardSizeArray = Array(this.boardSize)
@@ -27,7 +29,7 @@ export class GameComponent implements OnInit {
       .map((x, i) => i);
 
     this.stonePositions = this.randomStoneLaying(
-      NumberOfStones,
+      this.numberOfStones,
       Math.pow(this.boardSize, 2)
     );
 
@@ -36,6 +38,7 @@ export class GameComponent implements OnInit {
 
   mainStoneSelection(boxID: number) {
     this.mainStone = boxID;
+    this.numberOfStones -= 1;
     this.onSubmit = this.stoneMovement;
   }
 
@@ -67,7 +70,12 @@ export class GameComponent implements OnInit {
         this.selectBoxID = null;
       }
     } else if (this.selectBoxID != null) {
-      console.log('remove');
+      document.getElementById(`box${this.selectBoxID}`).innerHTML = null;
+      this.numberOfStones -= 1;
+
+      if(this.numberOfStones == 0){
+        console.log('oyun bitti')
+      }
     }
   }
 
