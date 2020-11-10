@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -13,6 +12,9 @@ export class GameComponent implements OnInit {
   boardSizeArray: Array<number>;
   stonePositions: Array<number>;
   boardSize: number;
+  onSubmit: Function = this.mainStoneSelection;
+  mainStone: number;
+  selectBoxID: number;
   ngOnInit(): void {
     this.boardSize = parseInt(
       this._activatedRoute.snapshot.paramMap.get('BoardSize')
@@ -29,36 +31,43 @@ export class GameComponent implements OnInit {
       Math.pow(this.boardSize, 2)
     );
 
-    this.boardSize =
-      this.boardSizeArray.length * this.boardSizeArray.length;
+    this.boardSize = this.boardSizeArray.length * this.boardSizeArray.length;
   }
 
-  selectBoxID: number = null;
-  onSubmit(boxID: number) {
+  mainStoneSelection(boxID: number) {
+    this.mainStone = boxID;
+    this.onSubmit = this.stoneMovement;
+  }
+
+  stoneMovement(boxID: number) {
     for (let i = 0; i < this.boardSize; i++) {
       document.getElementById(`box${i}`).classList.remove('board__box__green');
     }
-    const selectBox: any = document.getElementById(`box${boxID}`);
-    if (selectBox.getElementsByTagName('span').length) {
-      this.markPathOfMotion(boxID);
-      this.selectBoxID = boxID;
-    } else if (
-      this.selectBoxID != null &&
-      (this.selectBoxID + this.boardSizeArray.length == boxID ||
-        this.selectBoxID - this.boardSizeArray.length == boxID ||
-        (this.selectBoxID + 1 == boxID &&
-          this.selectBoxID % this.boardSizeArray.length !=
-            this.boardSizeArray.length - 1) ||
-        (this.selectBoxID - 1 == boxID &&
-          this.selectBoxID % this.boardSizeArray.length != 0))
-    ) {
-      selectBox.innerHTML = document.getElementById(
-        `box${this.selectBoxID}`
-      ).innerHTML;
-      document.getElementById(`box${this.selectBoxID}`).innerHTML = null;
-      this.selectBoxID = null;
-    } else {
-      this.selectBoxID = null;
+    if (this.mainStone != boxID) {
+      const selectBox: any = document.getElementById(`box${boxID}`);
+      if (selectBox.getElementsByTagName('span').length) {
+        this.markPathOfMotion(boxID);
+        this.selectBoxID = boxID;
+      } else if (
+        this.selectBoxID != null &&
+        (this.selectBoxID + this.boardSizeArray.length == boxID ||
+          this.selectBoxID - this.boardSizeArray.length == boxID ||
+          (this.selectBoxID + 1 == boxID &&
+            this.selectBoxID % this.boardSizeArray.length !=
+              this.boardSizeArray.length - 1) ||
+          (this.selectBoxID - 1 == boxID &&
+            this.selectBoxID % this.boardSizeArray.length != 0))
+      ) {
+        selectBox.innerHTML = document.getElementById(
+          `box${this.selectBoxID}`
+        ).innerHTML;
+        document.getElementById(`box${this.selectBoxID}`).innerHTML = null;
+        this.selectBoxID = null;
+      } else {
+        this.selectBoxID = null;
+      }
+    } else if (this.selectBoxID != null) {
+      console.log('remove');
     }
   }
 
@@ -66,8 +75,7 @@ export class GameComponent implements OnInit {
     if (
       boxID + 1 >= 0 &&
       boxID + 1 < this.boardSize &&
-      boxID % this.boardSizeArray.length !=
-        this.boardSizeArray.length - 1
+      boxID % this.boardSizeArray.length != this.boardSizeArray.length - 1
     )
       document
         .getElementById(`box${boxID + 1}`)
