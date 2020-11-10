@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.1](https://github.com/ismetkizgin/smart-board-game-angularjs/compare/v0.0.0...v0.0.1) (2020-11-10)
+
+
+### Features
+
+* added main stone selection algorithm ([2c470f5](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/2c470f580ce294eebffa6db98f24ec89dd57dbac))
+* added minimum number of moves algorithm ([e83aeca](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/e83aeca975193b1daa734a541f9c56f1f001cdd0))
+* stone removal algorytmy added ([c6f3b32](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/c6f3b326bcef7ae07fed97b75aac3ce540a9f6ea))
+
 ## 0.0.0 (2020-11-09)
 
 
