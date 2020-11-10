@@ -16,6 +16,7 @@ export class GameComponent implements OnInit {
   mainStone: number;
   selectBoxID: number;
   numberOfStones: number;
+  boardSizeSquare: number;
 
   ngOnInit(): void {
     this.boardSize = parseInt(
@@ -28,22 +29,29 @@ export class GameComponent implements OnInit {
       .fill(null)
       .map((x, i) => i);
 
+    this.boardSizeSquare = Math.pow(this.boardSize, 2);
+
     this.stonePositions = this.randomStoneLaying(
       this.numberOfStones,
-      Math.pow(this.boardSize, 2)
+      this.boardSizeSquare
     );
-
-    this.boardSize = this.boardSizeArray.length * this.boardSizeArray.length;
   }
 
   mainStoneSelection(boxID: number) {
-    this.mainStone = boxID;
-    this.numberOfStones -= 1;
-    this.onSubmit = this.stoneMovement;
+    if (
+      document.getElementById(`box${boxID}`).getElementsByTagName('span').length
+    ) {
+      this.mainStone = boxID;
+      this.numberOfStones -= 1;
+      this.onSubmit = this.stoneMovement;
+      this.stonePositions.forEach((x) => {
+        if (x != boxID) this.numberOfMovesCalculation(x);
+      });
+    }
   }
 
   stoneMovement(boxID: number) {
-    for (let i = 0; i < this.boardSize; i++) {
+    for (let i = 0; i < this.boardSizeSquare; i++) {
       document.getElementById(`box${i}`).classList.remove('board__box__green');
     }
     if (this.mainStone != boxID) {
@@ -73,8 +81,8 @@ export class GameComponent implements OnInit {
       document.getElementById(`box${this.selectBoxID}`).innerHTML = null;
       this.numberOfStones -= 1;
 
-      if(this.numberOfStones == 0){
-        console.log('oyun bitti')
+      if (this.numberOfStones == 0) {
+        console.log('oyun bitti');
       }
     }
   }
@@ -82,7 +90,7 @@ export class GameComponent implements OnInit {
   markPathOfMotion(boxID: number) {
     if (
       boxID + 1 >= 0 &&
-      boxID + 1 < this.boardSize &&
+      boxID + 1 < this.boardSizeSquare &&
       boxID % this.boardSizeArray.length != this.boardSizeArray.length - 1
     )
       document
@@ -91,7 +99,7 @@ export class GameComponent implements OnInit {
 
     if (
       boxID - 1 >= 0 &&
-      boxID - 1 < this.boardSize &&
+      boxID - 1 < this.boardSizeSquare &&
       boxID % this.boardSizeArray.length != 0
     )
       document
@@ -100,7 +108,7 @@ export class GameComponent implements OnInit {
 
     if (
       boxID - this.boardSizeArray.length >= 0 &&
-      boxID - this.boardSizeArray.length < this.boardSize
+      boxID - this.boardSizeArray.length < this.boardSizeSquare
     )
       document
         .getElementById(`box${boxID - this.boardSizeArray.length}`)
@@ -108,7 +116,7 @@ export class GameComponent implements OnInit {
 
     if (
       boxID + this.boardSizeArray.length >= 0 &&
-      boxID + this.boardSizeArray.length < this.boardSize
+      boxID + this.boardSizeArray.length < this.boardSizeSquare
     )
       document
         .getElementById(`box${boxID + this.boardSizeArray.length}`)
@@ -124,5 +132,14 @@ export class GameComponent implements OnInit {
         stonePositions.push(randomNumber);
     } while (stonePositions.length != numberOfStones);
     return stonePositions;
+  }
+
+  numberOfMovesCalculation(boxID: number) {
+    (<any>document.getElementById(`box${boxID}`)).firstChild.innerHTML =
+      Math.abs((this.mainStone % this.boardSize) - (boxID % this.boardSize)) +
+      Math.abs(
+        Math.floor(this.mainStone / this.boardSize) -
+          Math.floor(boxID / this.boardSize)
+      );
   }
 }
