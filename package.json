@@ -1,6 +1,6 @@
 {
   "name": "smart-board-game",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "npm run build & ng serve --configuration=production --host 0.0.0.0",
