@@ -43,6 +43,10 @@ export class GameComponent implements OnInit {
     ) {
       this.mainStone = boxID;
       this.numberOfStones -= 1;
+      const mainBox = (<any>document.getElementById(`box${boxID}`)).firstChild;
+      mainBox.classList.remove('board__stone__red');
+      mainBox.classList.add('board__stone__green');
+      mainBox.innerHTML = "";
       this.onSubmit = this.stoneMovement;
       this.stonePositions.forEach((x) => {
         if (x != boxID) this.numberOfMovesCalculation(x);

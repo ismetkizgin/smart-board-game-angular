@@ -1,4 +1,4 @@
-<div class="bg-image mt-0 pt-4">
+<div class="board__bg-image mt-0 pt-4">
     <div class="container board">
         <ng-container *ngIf="boardSizeArray.length % 2 == 0; then evenNumber else oddNumber"></ng-container>
         <ng-template #oddNumber>
@@ -7,7 +7,7 @@
                     id="box{{(vertical * boardSizeArray.length + horizontal)}}"
                     class="col board__box board__box__{{ (vertical * boardSizeArray.length + horizontal) % 2 == 0 ? 'white' : 'black' }}"
                     (click)="onSubmit((vertical * boardSizeArray.length + horizontal))">
-                    <span class="text-center text-white bg-span p-3"
+                    <span class="board__stone board__stone__red p-3"
                         *ngIf="stonePositions.indexOf((vertical * boardSizeArray.length + horizontal)) != -1">x</span>
                 </div>
             </div>
@@ -18,8 +18,8 @@
                     id="box{{(vertical * boardSizeArray.length + horizontal)}}"
                     [ngClass]="{'col board__box': true, 'board__box__white': (vertical % 2 == 0 && horizontal % 2 == 0) || (vertical % 2 == 1 && horizontal % 2 == 1), 'board__box__black': (vertical % 2 == 0 && horizontal % 2 == 1) || (vertical % 2 ==  1 && horizontal % 2 == 0) }"
                     (click)="onSubmit((vertical * boardSizeArray.length + horizontal))">
-                    <span class="text-center text-white bg-span p-3"
-                        *ngIf="stonePositions.indexOf((vertical * boardSizeArray.length + horizontal)) != -1"><span>4</span></span>
+                    <span class="board__stone board__stone__red p-3"
+                        *ngIf="stonePositions.indexOf((vertical * boardSizeArray.length + horizontal)) != -1">x</span>
                 </div>
             </div>
         </ng-template>

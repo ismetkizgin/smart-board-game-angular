@@ -15,29 +15,40 @@
       background-color: black;
     }
 
-    &__green{
+    &__green {
       background-color: green;
     }
   }
-}
-.row{
-  max-height: 8vw!important;
-}
-.bg-image{
-  background-image: url("../../../assets/image/background.jpg")!important;
-  min-height: 100vh;
-}
-.bg-span{
-  background-image: url("../../../assets/image/Stone.png")!important;
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-size: 60%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-@media only screen and (max-width: 1000px) {
-  .bg-span {
-    background-size: 100%;
+
+  &__bg-image {
+    background-image: url("../../../assets/image/background.jpg") !important;
+    min-height: 100vh;
+  }
+
+  &__stone {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    color: white;
+
+    &__red {
+      background-image: url("../../../assets/image/stone-red.png") !important;
+    }
+    
+    &__green {
+      background-image: url("../../../assets/image/stone-red-and-green.png") !important;
+    }
+
+    &__blue {
+      background-image: url("../../../assets/image/stone-blue.png") !important;
+    }
+
+    &__yellow {
+      background-image: url("../../../assets/image/stone-yellow-and-blue.png") !important;
+    }
   }
 }
