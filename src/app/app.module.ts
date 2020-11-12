@@ -9,8 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { SplashScreenComponent, SelectionScreenComponent } from './components';
+import { SplashScreenComponent, SelectionScreenComponent, EndgameWindowComponent } from './components';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -21,6 +23,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     routingComponents,
     SplashScreenComponent,
+    EndgameWindowComponent,
     SelectionScreenComponent,
   ],
   imports: [
@@ -29,7 +32,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     HttpClientModule,
     FormsModule,
+    MatDialogModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatSnackBarModule,
     TranslateModule.forRoot({
@@ -44,4 +49,4 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
