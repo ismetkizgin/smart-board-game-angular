@@ -3,10 +3,8 @@
   border-width: 3px;
   overflow: hidden;
   &__box {
-    width: 15vw;
     height: 10vh;
     overflow: hidden;
-    text-overflow: ellipsis;
     &__white {
       background-color: white;
     }
@@ -25,11 +23,24 @@
     min-height: 100vh;
   }
 
+  @media screen and (max-width:768px) {
+    &__stone{
+      background-size: 8vw 10vh!important;
+      margin-left: -10px!important;
+    }
+  }
+  @media screen and (max-width:400px) {
+    &__stone{
+      margin-left: -5px!important;
+    }
+  }
+
   &__stone {
     display: block;
-    width: 100%;
+    width: 130%;
     height: 100%;
-    background-size: 60%;
+    margin-left: -15px;
+    background-size: 6vw 10vh;  
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
