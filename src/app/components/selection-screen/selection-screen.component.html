@@ -1,35 +1,43 @@
-<div class="m-auto bg-color shadow-lg p-3">
-    <div class="row w-100 m-auto pl-3">
-        <a [routerLink]="[ '/game/5/3']">
-            <div class="btn btnSelection">
-                <i class="fas fa-bahai"></i>
-                <p>{{ 'Easy' | translate }}</p>
-            </div>
-        </a>
-        <a [routerLink]="[ '/game/7/5']">
-            <div class="btn ml-1 btnSelection">
-                <i class="fas fa-angry"></i>
-                <p>{{ 'Medium' | translate }}</p>
-            </div>
-        </a>
-        <a [routerLink]="[ '/game/9/10']">
-            <div class="btn ml-1 btnSelection">
-                <i class="fas fa-biohazard "></i>
-                <p>{{ 'Hard' | translate }}</p>
-            </div>
-        </a>
-        <a (click)="creativeFormToggle()">
-            <div class="btn ml-1 btnSelection">
-                <i class="fas fa-plus-circle"></i>
-                <p>{{ 'Creative' | translate }}</p>
-            </div>
-        </a>
+<div class="m-auto selection__bg-color shadow-lg pt-3">
+    <div class="row m-auto">
+        <div class="col-3">
+            <a [routerLink]="[ '/game/5/3']">
+                <div class="btn selection__btnSelection">
+                    <i class="fas fa-bahai"></i>
+                    <p class="selection__p-tag">{{ 'Easy' | translate }}</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-3">
+            <a [routerLink]="[ '/game/7/5']">
+                <div class="btn selection__btnSelection">
+                    <i class="fas fa-angry"></i>
+                    <p class="selection__p-tag">{{ 'Medium' | translate }}</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-3">
+            <a [routerLink]="[ '/game/9/10']">
+                <div class="btn selection__btnSelection">
+                    <i class="fas fa-biohazard "></i>
+                    <p class="selection__p-tag">{{ 'Hard' | translate }}</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-3">
+            <a (click)="creativeFormToggle()">
+                <div class="btn selection__btnSelection">
+                    <i class="fas fa-plus-circle"></i>
+                    <p class="selection__p-tag">{{ 'Creative' | translate }}</p>
+                </div>
+            </a>
+        </div>
     </div>
     <div class="pt-3">
         <form *ngIf="creativeFormShowHide">
-            <div class="row">
+            <div class="row selection__form-inputs">
                 <div class="col-6 form-group">
-                    <mat-form-field appearance="outline" class="w-100">
+                    <mat-form-field appearance="outline" class="w-100 ml-1">
                         <mat-label>{{ 'Board Size' | translate }}</mat-label>
                         <select matNativeControl name="BoardSize" #BoardSize="ngModel" [(ngModel)]="_model.BoardSize"
                             required>
