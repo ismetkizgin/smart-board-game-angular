@@ -1,0 +1,19 @@
+<div ma-dialog-title class="institution-dialog__header">
+    <div class="modal-header">
+        <h5>{{ 'End Game Window' | translate}}</h5>
+        <a [mat-dialog-close]="false" class="close-icon">
+            <mat-icon>close</mat-icon>
+        </a>
+    </div>
+</div>
+<mat-dialog-content class="mat-typography institution-dialog__content bg-menu">
+    <div class="row  p-3 pb-5 w-100">
+        <div class="bg-logo rounded-circle col-8 m-auto"></div>
+        <div class="col-12">
+            <a class="btn btn-warning border w-100 ml-2"><i class="far fa-play-circle"></i>
+                {{ 'Play Again' | translate }}</a>
+            <a class="btn btn-warning border w-100 mt-3 ml-2" [routerLink]="['']"><i class="fas fa-home"></i>
+                {{ 'Main Menu' | translate }}</a>
+        </div>
+    </div>
+</mat-dialog-content>
