@@ -63,7 +63,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-12 form-group">
-                    <a class="btn selection__btnGame border mt-3 ml-1 w-100"><i class="far fa-play-circle"></i>
+                    <a class="btn btnGame btn-warning border mt-3 w-100" [routerLink]="['/game', _model.BoardSize, _model.BoardStoneCount]"><i class="far fa-play-circle"></i>
                         {{ 'Start Game' | translate }}</a>
                 </div>
             </div>
