@@ -77,7 +77,9 @@ export class GameComponent implements OnInit {
           `box${this.selectBoxID}`
         ).innerHTML;
         document.getElementById(`box${this.selectBoxID}`).innerHTML = null;
+        this.numberOfMovesCalculation(boxID);
         this.selectBoxID = null;
+
       } else {
         this.selectBoxID = null;
       }
