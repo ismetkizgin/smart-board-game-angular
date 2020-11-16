@@ -1,13 +1,17 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { MatDialog } from '@angular/material/dialog';
+import { EndgameWindowComponent } from '../../components';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'],
 })
 export class GameComponent implements OnInit {
-  constructor(private _activatedRoute: ActivatedRoute) {}
+  constructor(
+    private _activatedRoute: ActivatedRoute,
+    private _dialog: MatDialog
+  ) {}
 
   boardSizeArray: Array<number>;
   stonePositions: Array<number>;
@@ -46,7 +50,7 @@ export class GameComponent implements OnInit {
       const mainBox = (<any>document.getElementById(`box${boxID}`)).firstChild;
       mainBox.classList.remove('board__stone__red');
       mainBox.classList.add('board__stone__green');
-      mainBox.innerHTML = "";
+      mainBox.innerHTML = '';
       this.onSubmit = this.stoneMovement;
       this.stonePositions.forEach((x) => {
         if (x != boxID) this.numberOfMovesCalculation(x);
@@ -79,7 +83,6 @@ export class GameComponent implements OnInit {
         document.getElementById(`box${this.selectBoxID}`).innerHTML = null;
         this.numberOfMovesCalculation(boxID);
         this.selectBoxID = null;
-
       } else {
         this.selectBoxID = null;
       }
@@ -88,7 +91,7 @@ export class GameComponent implements OnInit {
       this.numberOfStones -= 1;
 
       if (this.numberOfStones == 0) {
-        console.log('oyun bitti');
+        this.endGameWindowOpen();
       }
     }
   }
@@ -147,5 +150,17 @@ export class GameComponent implements OnInit {
         Math.floor(this.mainStone / this.boardSize) -
           Math.floor(boxID / this.boardSize)
       );
+  }
+
+  endGameWindowOpen() {
+    const diologRef = this._dialog.open(EndgameWindowComponent, {});
+
+    diologRef.afterClosed().subscribe(async (result: boolean) => {
+      if (result) {
+        this.ngOnInit();
+        this.mainStone = null;
+        this.onSubmit = this.mainStoneSelection
+      }
+    });
   }
 }
