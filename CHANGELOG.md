@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/ismetkizgin/smart-board-game-angularjs/compare/v0.0.1...v1.1.0) (2020-11-16)
+
+
+### Features
+
+* added endgame window design ([97069ea](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/97069ea68a126d4b0b4b6e79af43b06c26671fe2))
+* end game screen is activated. ([a63f826](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/a63f826c0d95c676d7899794de7d3ddd8773d49e))
+* stone change feature added in main stone selection ([7507752](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/75077529310b9115e7e62e87e726b41c560cbd7f))
+
+
+### Bug Fixes
+
+* selection screen design problems revised ([c709c21](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/c709c21b2a2582b27a4160010b46ae93fcd8f5d2))
+* stone design problems revised ([6dfce43](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/6dfce43004a0f8ee6166ba37c0da71cfa11c012b))
+
 ## [1.0.0](https://github.com/ismetkizgin/smart-board-game-angularjs/compare/v0.0.1...v1.0.0) (2020-11-11)
 
 
