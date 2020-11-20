@@ -1,1 +1,17 @@
-{}
+{
+  "Board Size": "Tahta Boyutu",
+  "Choose board size": "Tahta Boyutunu Seçin",
+  "Creative": "Yaratıcı",
+  "Easy": "Kolay",
+  "Enter Stone Count": "Taş Sayısını Girin",
+  "Hard": "Zor",
+  "Main Menu": "Ana menü",
+  "Medium": "Orta",
+  "Play Again": "Tekrar oyna",
+  "ProjectName": "Akıllı Tahta Oyunu",
+  "Single Player": "Tek Oyuncu",
+  "Start Game": "Oyuna Başla",
+  "Stone Count": "Taş Sayısı",
+  "Stone Count field must be filled": "Taş Sayısı alanı doldurulmalıdır !",
+  "Two Players": "İki Oyuncu"
+}

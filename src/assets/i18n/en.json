@@ -1,1 +1,17 @@
-{}
+{
+  "Board Size": "Board Size",
+  "Choose board size": "Choose board size",
+  "Creative": "Creative",
+  "Easy": "Easy",
+  "Enter Stone Count": "Enter Stone Count",
+  "Hard": "Hard",
+  "Main Menu": "Main Menu",
+  "Medium": "Medium",
+  "Play Again": "Play Again",
+  "ProjectName": "Smart Board Game",
+  "Single Player": "Single Player",
+  "Start Game": "Start Game",
+  "Stone Count": "Stone Count",
+  "Stone Count field must be filled": "Stone Count field must be filled !",
+  "Two Players": "Two Players"
+}
