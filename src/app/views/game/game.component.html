@@ -9,6 +9,8 @@
                     (click)="onSubmit((vertical * boardSizeArray.length + horizontal))">
                     <span class="board__stone board__stone__red p-3"
                         *ngIf="stonePositions.indexOf((vertical * boardSizeArray.length + horizontal)) != -1"></span>
+                    <i class="board__box__wall"
+                        *ngIf="wallPositions.indexOf((vertical * boardSizeArray.length + horizontal)) != -1"></i>
                 </div>
             </div>
         </ng-template>

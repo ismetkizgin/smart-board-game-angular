@@ -16,13 +16,24 @@
     &__green {
       background-color: green;
     }
+
+    &__wall {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-size: 70% 70%;
+      background-repeat: no-repeat;
+      background-position: center;
+      text-align: center;
+      color: white;
+      background-image: url("../../../assets/image/wall.png") !important;
+    }
   }
 
   &__bg-image {
     background-image: url("../../../assets/image/background.jpg") !important;
     min-height: 100vh;
   }
-
 
   &__stone {
     display: block;

@@ -21,6 +21,7 @@ export class GameComponent implements OnInit {
   selectBoxID: number;
   numberOfStones: number;
   boardSizeSquare: number;
+  wallPositions: Array<number> = [];
 
   ngOnInit(): void {
     this.boardSize = parseInt(
@@ -35,9 +36,27 @@ export class GameComponent implements OnInit {
 
     this.boardSizeSquare = Math.pow(this.boardSize, 2);
 
-    this.stonePositions = this.randomStoneLaying(
+    this.wallPositions = this.randomLaying(
+      Math.floor(this.boardSizeSquare / 10),
+      this.boardSizeSquare
+    );
+
+    this.stonePositions = this.randomLaying(
       this.numberOfStones,
       this.boardSizeSquare
+    );
+  }
+
+  motionAreaControl(boxID: number): boolean {
+    return (
+      this.selectBoxID != null &&
+      (this.selectBoxID + this.boardSizeArray.length == boxID ||
+        this.selectBoxID - this.boardSizeArray.length == boxID ||
+        (this.selectBoxID + 1 == boxID &&
+          this.selectBoxID % this.boardSizeArray.length !=
+            this.boardSizeArray.length - 1) ||
+        (this.selectBoxID - 1 == boxID &&
+          this.selectBoxID % this.boardSizeArray.length != 0))
     );
   }
 
@@ -68,14 +87,8 @@ export class GameComponent implements OnInit {
         this.markPathOfMotion(boxID);
         this.selectBoxID = boxID;
       } else if (
-        this.selectBoxID != null &&
-        (this.selectBoxID + this.boardSizeArray.length == boxID ||
-          this.selectBoxID - this.boardSizeArray.length == boxID ||
-          (this.selectBoxID + 1 == boxID &&
-            this.selectBoxID % this.boardSizeArray.length !=
-              this.boardSizeArray.length - 1) ||
-          (this.selectBoxID - 1 == boxID &&
-            this.selectBoxID % this.boardSizeArray.length != 0))
+        this.motionAreaControl(boxID) &&
+        !selectBox.getElementsByTagName('i').length
       ) {
         selectBox.innerHTML = document.getElementById(
           `box${this.selectBoxID}`
@@ -86,7 +99,7 @@ export class GameComponent implements OnInit {
       } else {
         this.selectBoxID = null;
       }
-    } else if (this.selectBoxID != null) {
+    } else if (this.motionAreaControl(boxID)) {
       document.getElementById(`box${this.selectBoxID}`).innerHTML = null;
       this.numberOfStones -= 1;
 
@@ -102,45 +115,66 @@ export class GameComponent implements OnInit {
       boxID + 1 < this.boardSizeSquare &&
       boxID % this.boardSizeArray.length != this.boardSizeArray.length - 1
     )
-      document
-        .getElementById(`box${boxID + 1}`)
-        .classList.add('board__box__green');
+      if (
+        !document.getElementById(`box${boxID + 1}`).getElementsByTagName('i')
+          .length
+      )
+        document
+          .getElementById(`box${boxID + 1}`)
+          .classList.add('board__box__green');
 
     if (
       boxID - 1 >= 0 &&
       boxID - 1 < this.boardSizeSquare &&
       boxID % this.boardSizeArray.length != 0
     )
-      document
-        .getElementById(`box${boxID - 1}`)
-        .classList.add('board__box__green');
+      if (
+        !document.getElementById(`box${boxID - 1}`).getElementsByTagName('i')
+          .length
+      )
+        document
+          .getElementById(`box${boxID - 1}`)
+          .classList.add('board__box__green');
 
     if (
       boxID - this.boardSizeArray.length >= 0 &&
       boxID - this.boardSizeArray.length < this.boardSizeSquare
     )
-      document
-        .getElementById(`box${boxID - this.boardSizeArray.length}`)
-        .classList.add('board__box__green');
+      if (
+        !document
+          .getElementById(`box${boxID - this.boardSizeArray.length}`)
+          .getElementsByTagName('i').length
+      )
+        document
+          .getElementById(`box${boxID - this.boardSizeArray.length}`)
+          .classList.add('board__box__green');
 
     if (
       boxID + this.boardSizeArray.length >= 0 &&
       boxID + this.boardSizeArray.length < this.boardSizeSquare
     )
-      document
-        .getElementById(`box${boxID + this.boardSizeArray.length}`)
-        .classList.add('board__box__green');
+      if (
+        !document
+          .getElementById(`box${boxID + this.boardSizeArray.length}`)
+          .getElementsByTagName('i').length
+      )
+        document
+          .getElementById(`box${boxID + this.boardSizeArray.length}`)
+          .classList.add('board__box__green');
   }
 
-  randomStoneLaying(numberOfStones: number, maxLimit: number): Array<number> {
-    let stonePositions: Array<number> = [];
+  randomLaying(numberOfStones: number, maxLimit: number): Array<number> {
+    let positions: Array<number> = [];
     let randomNumber: number;
     do {
       randomNumber = Math.floor(Math.random() * maxLimit);
-      if (stonePositions.indexOf(randomNumber) === -1)
-        stonePositions.push(randomNumber);
-    } while (stonePositions.length != numberOfStones);
-    return stonePositions;
+      if (
+        positions.indexOf(randomNumber) === -1 &&
+        this.wallPositions.indexOf(randomNumber) === -1
+      )
+        positions.push(randomNumber);
+    } while (positions.length != numberOfStones);
+    return positions;
   }
 
   numberOfMovesCalculation(boxID: number) {
@@ -157,9 +191,7 @@ export class GameComponent implements OnInit {
 
     diologRef.afterClosed().subscribe(async (result: boolean) => {
       if (result) {
-        this.ngOnInit();
-        this.mainStone = null;
-        this.onSubmit = this.mainStoneSelection
+        window.location.reload();
       }
     });
   }
