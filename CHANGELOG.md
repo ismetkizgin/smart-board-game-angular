@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/ismetkizgin/smart-board-game-angularjs/compare/v1.1.0...v1.2.0) (2020-11-20)
+
+
+### Features
+
+* walls are included in the game ([c72c67e](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/c72c67e061c0db93da8c00e399b3a6569e967233))
+
 ## [1.1.0](https://github.com/ismetkizgin/smart-board-game-angularjs/compare/v0.0.1...v1.1.0) (2020-11-16)
 
 
