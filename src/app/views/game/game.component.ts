@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { EndgameWindowComponent } from '../../components';
 import * as io from 'socket.io-client';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-game',
@@ -55,7 +56,7 @@ export class GameComponent implements OnInit {
         this.boardSizeSquare
       );
     } else {
-      this._socket = io('http://localhost:5000');
+      this._socket = io(environment.socketApiEntpoint);
       this._socket.on('gameStartingSituation', (data) => {
         this.gameStart = data.state;
         this.wallPositions = data.wallPositions;
