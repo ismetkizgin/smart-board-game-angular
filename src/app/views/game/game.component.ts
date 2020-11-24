@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { EndgameWindowComponent } from '../../components';
+import * as io from 'socket.io-client';
+
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -10,41 +12,65 @@ import { EndgameWindowComponent } from '../../components';
 export class GameComponent implements OnInit {
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _dialog: MatDialog
+    private _dialog: MatDialog,
+    private _router: Router
   ) {}
 
+  _socket: any;
   boardSizeArray: Array<number>;
   stonePositions: Array<number>;
   boardSize: number;
   onSubmit: Function = this.mainStoneSelection;
   mainStone: number;
   selectBoxID: number;
-  numberOfStones: number;
+  numberOfStones: number = 3;
   boardSizeSquare: number;
   wallPositions: Array<number> = [];
+  gameStart: boolean = !this._router.isActive('game/multiplayer', true);
+  playerID: number = Math.floor(Math.random() * 100000) + 1000;
 
   ngOnInit(): void {
     this.boardSize = parseInt(
-      this._activatedRoute.snapshot.paramMap.get('BoardSize')
+      this._activatedRoute.snapshot.paramMap.get('BoardSize') || '9'
     );
+
     this.numberOfStones = parseInt(
-      this._activatedRoute.snapshot.paramMap.get('NumberOfStones')
+      this._activatedRoute.snapshot.paramMap.get('NumberOfStones') || '5'
     );
+
     this.boardSizeArray = Array(this.boardSize)
       .fill(null)
       .map((x, i) => i);
 
     this.boardSizeSquare = Math.pow(this.boardSize, 2);
 
-    this.wallPositions = this.randomLaying(
-      Math.floor(this.boardSizeSquare / 10),
-      this.boardSizeSquare
-    );
+    if (!this._router.isActive('game/multiplayer', true)) {
+      this.wallPositions = this.randomLaying(
+        Math.floor(this.boardSizeSquare / 10),
+        this.boardSizeSquare
+      );
 
-    this.stonePositions = this.randomLaying(
-      this.numberOfStones,
-      this.boardSizeSquare
-    );
+      this.stonePositions = this.randomLaying(
+        this.numberOfStones,
+        this.boardSizeSquare
+      );
+    } else {
+      this._socket = io('http://localhost:5000');
+      this._socket.on('gameStartingSituation', (data) => {
+        this.gameStart = data.state;
+        this.wallPositions = data.wallPositions;
+        this.stonePositions = data.stonePositions;
+        this.numberOfStones = data.stonePositions.length;
+      });
+
+      this._socket.on('gameOver', (data) => {
+        if (data.state) {
+          this.gameStart = false;
+          if (this.playerID == data.playerID) console.log('Kandın');
+          else console.log('Kaybettin');
+        }
+      });
+    }
   }
 
   motionAreaControl(boxID: number): boolean {
@@ -105,6 +131,9 @@ export class GameComponent implements OnInit {
 
       if (this.numberOfStones == 0) {
         this.endGameWindowOpen();
+
+        if (this._router.isActive('game/multiplayer', true))
+          this._socket.emit('gameOver', this.playerID);
       }
     }
   }
@@ -194,5 +223,10 @@ export class GameComponent implements OnInit {
         window.location.reload();
       }
     });
+  }
+
+  ready() {
+    this._socket.emit('ready', this.playerID);
+    console.log('hello word');
   }
 }

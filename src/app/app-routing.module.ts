@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {
-  HomepageComponent,
-  GameComponent,
-} from './views';
+import { HomepageComponent, GameComponent } from './views';
 
 const routes: Routes = [
+  {
+    path: 'game/multiplayer',
+    component: GameComponent,
+  },
   {
     path: 'game/:BoardSize/:NumberOfStones',
     component: GameComponent,
@@ -21,7 +22,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-export const routingComponents = [
-  HomepageComponent,
-  GameComponent,
-];
+export const routingComponents = [HomepageComponent, GameComponent];

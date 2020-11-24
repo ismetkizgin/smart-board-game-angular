@@ -1,29 +1,37 @@
-<div class="board__bg-image mt-0 pt-4">
-    <div class="container board">
-        <ng-container *ngIf="boardSizeArray.length % 2 == 0; then evenNumber else oddNumber"></ng-container>
-        <ng-template #oddNumber>
-            <div class="row" *ngFor="let vertical of boardSizeArray">
-                <div *ngFor="let horizontal of boardSizeArray"
-                    id="box{{(vertical * boardSizeArray.length + horizontal)}}"
-                    class="col board__box board__box__{{ (vertical * boardSizeArray.length + horizontal) % 2 == 0 ? 'white' : 'black' }}"
-                    (click)="onSubmit((vertical * boardSizeArray.length + horizontal))">
-                    <span class="board__stone board__stone__red p-3"
-                        *ngIf="stonePositions.indexOf((vertical * boardSizeArray.length + horizontal)) != -1"></span>
-                    <i class="board__box__wall"
-                        *ngIf="wallPositions.indexOf((vertical * boardSizeArray.length + horizontal)) != -1"></i>
+<ng-container *ngIf="gameStart; then board else multiPlayerScreen"></ng-container>
+
+<ng-template #board>
+    <div class="board__bg-image mt-0 pt-4">
+        <div class="container board">
+            <ng-container *ngIf="boardSizeArray.length % 2 == 0; then evenNumber else oddNumber"></ng-container>
+            <ng-template #oddNumber>
+                <div class="row" *ngFor="let vertical of boardSizeArray">
+                    <div *ngFor="let horizontal of boardSizeArray"
+                        id="box{{(vertical * boardSizeArray.length + horizontal)}}"
+                        class="col board__box board__box__{{ (vertical * boardSizeArray.length + horizontal) % 2 == 0 ? 'white' : 'black' }}"
+                        (click)="onSubmit((vertical * boardSizeArray.length + horizontal))">
+                        <span class="board__stone board__stone__red p-3"
+                            *ngIf="stonePositions.indexOf((vertical * boardSizeArray.length + horizontal)) != -1"></span>
+                        <i class="board__box__wall"
+                            *ngIf="wallPositions.indexOf((vertical * boardSizeArray.length + horizontal)) != -1"></i>
+                    </div>
                 </div>
-            </div>
-        </ng-template>
-        <ng-template #evenNumber>
-            <div class="row" *ngFor="let vertical of boardSizeArray">
-                <div *ngFor="let horizontal of boardSizeArray"
-                    id="box{{(vertical * boardSizeArray.length + horizontal)}}"
-                    [ngClass]="{'col board__box': true, 'board__box__white': (vertical % 2 == 0 && horizontal % 2 == 0) || (vertical % 2 == 1 && horizontal % 2 == 1), 'board__box__black': (vertical % 2 == 0 && horizontal % 2 == 1) || (vertical % 2 ==  1 && horizontal % 2 == 0) }"
-                    (click)="onSubmit((vertical * boardSizeArray.length + horizontal))">
-                    <span class="board__stone board__stone__red p-3"
-                        *ngIf="stonePositions.indexOf((vertical * boardSizeArray.length + horizontal)) != -1"></span>
+            </ng-template>
+            <ng-template #evenNumber>
+                <div class="row" *ngFor="let vertical of boardSizeArray">
+                    <div *ngFor="let horizontal of boardSizeArray"
+                        id="box{{(vertical * boardSizeArray.length + horizontal)}}"
+                        [ngClass]="{'col board__box': true, 'board__box__white': (vertical % 2 == 0 && horizontal % 2 == 0) || (vertical % 2 == 1 && horizontal % 2 == 1), 'board__box__black': (vertical % 2 == 0 && horizontal % 2 == 1) || (vertical % 2 ==  1 && horizontal % 2 == 0) }"
+                        (click)="onSubmit((vertical * boardSizeArray.length + horizontal))">
+                        <span class="board__stone board__stone__red p-3"
+                            *ngIf="stonePositions.indexOf((vertical * boardSizeArray.length + horizontal)) != -1"></span>
+                    </div>
                 </div>
-            </div>
-        </ng-template>
+            </ng-template>
+        </div>
     </div>
-</div>
+</ng-template>
+
+<ng-template #multiPlayerScreen>
+    <a (click)="ready()">asdasdasdas</a>
+</ng-template>
