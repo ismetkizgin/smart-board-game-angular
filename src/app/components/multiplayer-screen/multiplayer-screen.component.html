@@ -1,6 +1,8 @@
 <ng-container *ngIf="readyControl; then readyScreen else multiplayerScreen"></ng-container>
 <ng-template #multiplayerScreen>
     <div class="row h-100 multiplayer__bg">
+        <button class="back-btn bg-success px-2 py-1 text-center" [routerLink]="['']"><i
+                class="fas fa-arrow-circle-left"></i>{{'Back' | translate }}</button>
         <div class="row m-auto multiplayer__center">
             <div class="m-auto multiplayer__icon bg-success border rounded-circle">
                 <i class="fas fa-people-arrows"></i>
@@ -14,6 +16,11 @@
 <ng-template #readyScreen>
     <div class="row h-100 multiplayer__ready bg-secondary">
         <div class="row m-auto multiplayer__text text-light font-weight-bolder">
-            {{ 'Waiting for Other Player' | translate }}...</div>
+            <div class="col-12 text-center">{{ 'Waiting for Other Player' | translate }}...</div>
+            <div class="col-12  d-flex justify-content-center"><button class="btn-cancel bg-danger text-center px-3 py-2"
+                    (click)="notReady()"><i class="fas fa-dot-circle mr-2"></i>{{'Cancel' | translate }}</button></div>
+
+        </div>
+
     </div>
 </ng-template>
