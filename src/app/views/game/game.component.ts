@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { EndgameWindowComponent } from '../../components';
-import * as io from 'socket.io-client';
-import { environment } from '../../../environments/environment';
+import { SocketService } from 'src/app/utils';
 
 @Component({
   selector: 'app-game',
@@ -14,10 +13,11 @@ export class GameComponent implements OnInit {
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _dialog: MatDialog,
-    private _router: Router
+    private _router: Router,
+    private _socketServie: SocketService
   ) {}
 
-  _socket: any;
+  _socket = this._socketServie.connection;
   boardSizeArray: Array<number>;
   stonePositions: Array<number>;
   boardSize: number;
@@ -56,7 +56,6 @@ export class GameComponent implements OnInit {
         this.boardSizeSquare
       );
     } else {
-      this._socket = io(environment.socketApiEntpoint);
       this._socket.on('gameStartingSituation', (data) => {
         this.gameStart = data.state;
         this.wallPositions = data.wallPositions;
@@ -67,8 +66,7 @@ export class GameComponent implements OnInit {
       this._socket.on('gameOver', (data) => {
         if (data.state) {
           this.gameStart = false;
-          if (this.playerID == data.playerID) console.log('Kazandın');
-          else console.log('Kaybettin');
+          this.endGameWindowOpen(this.playerID == data.playerID);
         }
       });
     }
@@ -131,10 +129,9 @@ export class GameComponent implements OnInit {
       this.numberOfStones -= 1;
 
       if (this.numberOfStones == 0) {
-        this.endGameWindowOpen();
-
         if (this._router.isActive('game/multiplayer', true))
           this._socket.emit('gameOver', this.playerID);
+        else this.endGameWindowOpen();
       }
     }
   }
@@ -216,8 +213,10 @@ export class GameComponent implements OnInit {
       );
   }
 
-  endGameWindowOpen() {
-    const diologRef = this._dialog.open(EndgameWindowComponent, {});
+  endGameWindowOpen(winningStatus: boolean = true) {
+    const diologRef = this._dialog.open(EndgameWindowComponent, {
+      data: { winningStatus },
+    });
 
     diologRef.afterClosed().subscribe(async (result: boolean) => {
       if (result) {
