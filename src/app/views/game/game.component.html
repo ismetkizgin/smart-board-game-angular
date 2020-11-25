@@ -10,7 +10,7 @@
                         id="box{{(vertical * boardSizeArray.length + horizontal)}}"
                         class="col board__box board__box__{{ (vertical * boardSizeArray.length + horizontal) % 2 == 0 ? 'white' : 'black' }}"
                         (click)="onSubmit((vertical * boardSizeArray.length + horizontal))">
-                        <span class="board__stone board__stone__red p-3"
+                        <span class="board__stone board__stone__red"
                             *ngIf="stonePositions.indexOf((vertical * boardSizeArray.length + horizontal)) != -1"></span>
                         <i class="board__box__wall"
                             *ngIf="wallPositions.indexOf((vertical * boardSizeArray.length + horizontal)) != -1"></i>
