@@ -67,7 +67,7 @@ export class GameComponent implements OnInit {
       this._socket.on('gameOver', (data) => {
         if (data.state) {
           this.gameStart = false;
-          if (this.playerID == data.playerID) console.log('Kandın');
+          if (this.playerID == data.playerID) console.log('Kazandın');
           else console.log('Kaybettin');
         }
       });
@@ -224,10 +224,5 @@ export class GameComponent implements OnInit {
         window.location.reload();
       }
     });
-  }
-
-  ready() {
-    this._socket.emit('ready', this.playerID);
-    console.log('hello word');
   }
 }

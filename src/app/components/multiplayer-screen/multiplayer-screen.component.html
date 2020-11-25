@@ -1,0 +1,19 @@
+<ng-container *ngIf="readyControl; then readyScreen else multiplayerScreen"></ng-container>
+<ng-template #multiplayerScreen>
+    <div class="row h-100 multiplayer__bg">
+        <div class="row m-auto multiplayer__center">
+            <div class="m-auto multiplayer__icon bg-success border rounded-circle">
+                <i class="fas fa-people-arrows"></i>
+            </div>
+            <a class="btn btn-success border w-100 mt-3 ml-2 multiplayer__btn" (click)="ready()">
+                <i class="far fa-check-circle"></i>
+                {{ 'Ready' | translate }}</a>
+        </div>
+    </div>
+</ng-template>
+<ng-template #readyScreen>
+    <div class="row h-100 multiplayer__ready bg-secondary">
+        <div class="row m-auto multiplayer__text text-light font-weight-bolder">
+            {{ 'Waiting for Other Player' | translate }}...</div>
+    </div>
+</ng-template>
