@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from 'src/app/utils';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -11,6 +12,10 @@ export class HomepageComponent implements OnInit {
 
   selectionScreenShowHide = false;
   ngOnInit(): void {}
+  
+  refreshPage() {
+    window.location.reload();
+   }
 
   selectionScreenToggle(event) {
     if (event) {
