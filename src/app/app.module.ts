@@ -12,7 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { SplashScreenComponent, SelectionScreenComponent, EndgameWindowComponent } from './components';
+import { SplashScreenComponent, SelectionScreenComponent, EndgameWindowComponent,MultiplayerScreenComponent } from './components';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -25,6 +25,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SplashScreenComponent,
     EndgameWindowComponent,
     SelectionScreenComponent,
+    MultiplayerScreenComponent,
   ],
   imports: [
     BrowserModule,

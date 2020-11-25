@@ -1,6 +1,6 @@
 <mat-dialog-content class="mat-typography endGame-dialog endGame-dialog__content">
     <div class="row  p-3 pb-5 w-100">
-        <div class="endGame-dialog__logo rounded-circle col-8 m-auto"></div>
+        <div class="endGame-dialog__logo rounded-circle col-sm-8 col-12 m-auto"></div>
         <div class="col-12">
             <a [mat-dialog-close]="true" class="btn btn-warning border w-100 ml-2 endGame-dialog__btn"><i class="far fa-play-circle"></i>
                 {{ 'Play Again' | translate }}</a>
@@ -8,4 +8,5 @@
                 {{ 'Main Menu' | translate }}</a>
         </div>
     </div>
+    <div class="w-100 h-100 bg-secondary endGame-dialog__back-container"></div>
 </mat-dialog-content>

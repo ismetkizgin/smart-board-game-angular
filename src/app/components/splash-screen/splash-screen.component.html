@@ -3,7 +3,7 @@
     <div class="col-12">
         <a class="btn btn-warning border w-100 mt-3" (click)="singlePlayerSubmit()"><i class="far fa-play-circle"></i>
             {{ 'Single Player' | translate }}</a>
-        <a class="btn btn-warning border w-100 mt-3"><i class="fas fa-user-friends"></i>
+        <a class="btn btn-warning border w-100 mt-3" [routerLink]="['/game/multiplayer']"><i class="fas fa-user-friends"></i>
             {{ 'Two Players' | translate }}</a>
     </div>
     <div class="mx-auto d-inline mt-5">

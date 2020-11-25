@@ -21,7 +21,7 @@
       display: block;
       width: 100%;
       height: 100%;
-      background-size: 70% 70%;
+      background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
       text-align: center;
@@ -37,28 +37,35 @@
 
   &__stone {
     display: block;
-    width: 100%;
     height: 100%;
     background-size: 70% 100%;
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
+    padding-top: 18px!important;
     color: white;
 
     &__red {
       background-image: url("../../../assets/image/stone-red.png") !important;
+      background-size: contain;
     }
 
     &__green {
       background-image: url("../../../assets/image/stone-red-and-green.png") !important;
+      background-size: contain;
     }
 
     &__blue {
       background-image: url("../../../assets/image/stone-blue.png") !important;
+      background-size: contain;
     }
 
     &__yellow {
       background-image: url("../../../assets/image/stone-yellow-and-blue.png") !important;
+      background-size: contain;
     }
   }
+}
+.col{
+  padding: 0!important;
 }
