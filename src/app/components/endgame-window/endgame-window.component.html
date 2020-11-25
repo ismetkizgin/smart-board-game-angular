@@ -1,6 +1,13 @@
 <mat-dialog-content class="mat-typography endGame-dialog endGame-dialog__content">
     <div class="row  p-3 pb-5 w-100">
         <div class="endGame-dialog__logo rounded-circle col-sm-8 col-12 m-auto"></div>
+        <ng-container *ngIf="control; then won else lost"></ng-container>
+        <ng-template #lost>
+            <div>{{'You Lost' | translate}}</div>
+        </ng-template>
+        <ng-template #won>
+            <div>{{'You Won' | translate}}</div>
+        </ng-template>
         <div class="col-12">
             <a [mat-dialog-close]="true" class="btn btn-warning border w-100 ml-2 endGame-dialog__btn"><i class="far fa-play-circle"></i>
                 {{ 'Play Again' | translate }}</a>

@@ -32,4 +32,8 @@
     opacity: 0.5;
   }
 }
-
+::ng-deep {
+  mat-dialog-container {
+  display: contents !important;
+  }
+ }
