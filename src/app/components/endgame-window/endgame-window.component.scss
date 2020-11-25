@@ -31,9 +31,40 @@
     z-index: -1;
     opacity: 0.5;
   }
+  &__control{
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    padding-top: 16px;
+    font-size: x-large;
+    font-weight: bolder;
+    margin-bottom: 1rem!important;
+    border-radius: 20px;
+    &__won {
+      background: linear-gradient(-45deg, #30be2b,#23a6d5, #d38928, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradient 8s ease infinite;
+    }
+    &__lost {
+      background: linear-gradient(-45deg, #d62323,#d1a513, #d5234f, #8d1c7e);
+      background-size: 400% 400%;
+      animation: gradient 8s ease infinite;
+    }
+  }
 }
 ::ng-deep {
   mat-dialog-container {
   display: contents !important;
   }
  }
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

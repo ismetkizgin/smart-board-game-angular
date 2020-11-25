@@ -15,7 +15,7 @@ export class EndgameWindowComponent implements OnInit {
 
   control:boolean=false;
   ngOnInit(): void {
-    this.control=this.data;
+    this.control=this.data?.winningStatus
   }
 
 }
