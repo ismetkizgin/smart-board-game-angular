@@ -11,9 +11,11 @@
     background-size: cover;
     max-height: 100vh;
     max-width: 100vw;
+    margin-left: 0!important;
   }
   &__ready {
     max-height: 100vh;
+    margin-left: 0!important;
     max-width: 100vw;
     opacity: 0.6;
   }
