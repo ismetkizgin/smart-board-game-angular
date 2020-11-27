@@ -1,18 +1,18 @@
-.selection{
+.selection {
   &__bg-color {
     background-color: rgb(230, 133, 42);
     border: solid 2px white;
   }
-  @media screen and (max-width:576px){
-    &__bg-color{
+  @media screen and (max-width: 576px) {
+    &__bg-color {
       max-width: 255px;
     }
-    &__form-inputs{
+    &__form-inputs {
       max-width: 210px;
     }
   }
-  @media screen and (min-width:577px){
-    &__bg-color{
+  @media screen and (min-width: 577px) {
+    &__bg-color {
       min-width: 460px;
     }
   }
@@ -33,24 +33,33 @@
       background-color: green;
     }
   }
-  &__p-tag{
+  &__p-tag {
     font-size: medium;
     color: white;
   }
+
+  &__box {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 570px) {
+    &__mb {
+      margin-bottom: 15px;
+    }
+  }
 }
 .fas {
-	font-size: 40px;
+  font-size: 40px;
 }
 .fa-bahai {
-	color: rgb(252, 193, 0);
+  color: rgb(252, 193, 0);
 }
 .fa-angry {
-	color: rgb(11, 153, 219);
+  color: rgb(11, 153, 219);
 }
 .fa-biohazard {
-	color: blueviolet;
+  color: blueviolet;
 }
 .fa-plus-circle {
-	color: rgb(29, 199, 29);
+  color: rgb(29, 199, 29);
 }
-

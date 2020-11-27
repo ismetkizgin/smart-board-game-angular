@@ -17,10 +17,9 @@
     <div class="row h-100 multiplayer__ready bg-secondary">
         <div class="row m-auto multiplayer__text text-light font-weight-bolder">
             <div class="col-12 text-center">{{ 'Waiting for Other Player' | translate }}...</div>
-            <div class="col-12  d-flex justify-content-center"><button class="btn-cancel bg-danger text-center px-3 py-2"
-                    (click)="notReady()"><i class="fas fa-dot-circle mr-2"></i>{{'Cancel' | translate }}</button></div>
-
+            <div class="col-12  d-flex justify-content-center"><button
+                    class="btn-cancel bg-danger text-center px-3 py-2" (click)="notReady()"><i
+                        class="fas fa-ban mr-2"></i>{{'Cancel' | translate }}</button></div>
         </div>
-
     </div>
 </ng-template>

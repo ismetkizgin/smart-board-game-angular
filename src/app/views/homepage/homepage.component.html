@@ -1,7 +1,9 @@
 <div class="row bg-body w-100">
-    <button class="back-btn pr-2 py-1" *ngIf="selectionScreenShowHide" (click)="refreshPage()"><i class="fas fa-arrow-circle-left"></i>{{'Back' | translate }}</button>
+    <button class="back-btn pr-2 py-1" *ngIf="selectionScreenShowHide" (click)="selectionScreenToggle(true)"><i
+            class="fas fa-arrow-circle-left"></i>{{'Back' | translate }}</button>
     <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 m-auto">
-        <app-splash-screen *ngIf="!selectionScreenShowHide" (selectionScreenToggle)="selectionScreenToggle($event)"></app-splash-screen>
+        <app-splash-screen *ngIf="!selectionScreenShowHide" (selectionScreenToggle)="selectionScreenToggle($event)">
+        </app-splash-screen>
         <app-selection-screen *ngIf="selectionScreenShowHide"></app-selection-screen>
     </div>
 </div>

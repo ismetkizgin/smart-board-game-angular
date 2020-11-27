@@ -1,46 +1,46 @@
-.multiplayer{
-    &__btn {
-        border-radius: 30px;
-        font-size: larger;
-      }
-      &__center{
-          width: 340px;
-      }
-      &__bg{
-        background-image: url("../../../assets/image/home-background.png");
-        background-size: cover;
-        max-height: 100vh;
-        max-width: 100vw;
-      }
-      &__ready{
-        max-height: 100vh;
-        max-width: 100vw;
-        opacity: 0.6;
-      }
-      &__text{
-          font-size: 24px;
-      }
-      &__icon{
-          width: 100px;
-          height: 100px;
-      }
+.multiplayer {
+  &__btn {
+    border-radius: 30px;
+    font-size: larger;
+  }
+  &__center {
+    width: 340px;
+  }
+  &__bg {
+    background-image: url("../../../assets/image/home-background.png");
+    background-size: cover;
+    max-height: 100vh;
+    max-width: 100vw;
+  }
+  &__ready {
+    max-height: 100vh;
+    max-width: 100vw;
+    opacity: 0.6;
+  }
+  &__text {
+    font-size: 24px;
+  }
+  &__icon {
+    width: 100px;
+    height: 100px;
+  }
 }
-.fa-people-arrows{
-    font-size: 60px;
-    color: white;
-    margin-top: 20px;
-    margin-left: 16px;
+.fa-people-arrows {
+  font-size: 60px;
+  color: white;
+  margin-top: 20px;
+  margin-left: 16px;
 }
-.fa-dot-circle{
+.fa-dot-circle {
   font-size: 30px;
   color: white;
 }
-.fa-arrow-circle-left{
+.fa-arrow-circle-left {
   font-size: 30px;
   position: absolute;
   margin-left: -32px;
 }
-.back-btn{
+.back-btn {
   font-size: 20px;
   position: absolute;
   background-color: orange;
@@ -51,9 +51,11 @@
   border-radius: 30px;
   border: 5px;
 }
-.back-btn:hover{
+.back-btn:hover {
   background-color: rgb(226, 124, 21);
 }
-.btn-cancel{
+.btn-cancel {
   border-radius: 30px;
+  margin-top: 15px;
+  color: white;
 }
