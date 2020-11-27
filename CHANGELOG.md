@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/ismetkizgin/smart-board-game-angularjs/compare/v1.2.0...v1.3.0) (2020-11-27)
+
+
+### Features
+
+* added multiplayer mode ([8954361](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/89543610e33b53b43a03296b547e57bb6e82ecd4))
+* multiplayer endgame window algorithm created ([b0d36d3](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/b0d36d3ab1e7d60d248f5f8e1b0336535ace8796))
+* multiplayer screen design ([aea96ee](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/aea96ee4912305a2a461effad18db7fd366d605f))
+
+
+### Bug Fixes
+
+* faulty designs revised ([e7433d9](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/e7433d9078af51d0031f2f31da797c6863fe9e74))
+* fix for build error ([9ecb536](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/9ecb536d5738d620a8a93f384f4a667425f91265))
+* the error of the move count algorithm has been fixed ([83718d6](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/83718d6a67dafaf0f7125a6c00bcf1e6c0ff33c9))
+
 ## [1.2.0](https://github.com/ismetkizgin/smart-board-game-angularjs/compare/v1.1.0...v1.2.0) (2020-11-20)
 
 
