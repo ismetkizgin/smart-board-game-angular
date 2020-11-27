@@ -18,6 +18,7 @@ import {
   SelectionScreenComponent,
   EndgameWindowComponent,
   MultiplayerScreenComponent,
+  GameButtonsComponent
 } from './components';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -32,6 +33,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     EndgameWindowComponent,
     SelectionScreenComponent,
     MultiplayerScreenComponent,
+    GameButtonsComponent
   ],
   imports: [
     BrowserModule,
