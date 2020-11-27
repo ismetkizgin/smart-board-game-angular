@@ -205,12 +205,60 @@ export class GameComponent implements OnInit {
   }
 
   numberOfMovesCalculation(boxID: number) {
-    (<any>document.getElementById(`box${boxID}`)).firstChild.innerHTML =
+    let numberOfMoves =
       Math.abs((this.mainStone % this.boardSize) - (boxID % this.boardSize)) +
       Math.abs(
         Math.floor(this.mainStone / this.boardSize) -
           Math.floor(boxID / this.boardSize)
       );
+
+    let [initialValue, counter] =
+      this.mainStone > boxID
+        ? [this.mainStone, boxID]
+        : [boxID, this.mainStone];
+
+    if (
+      !Math.abs((this.mainStone % this.boardSize) - (boxID % this.boardSize))
+    ) {
+      for (
+        initialValue;
+        initialValue != boxID;
+        initialValue -= this.boardSize
+      ) {
+        if (
+          document
+            .getElementById(`box${initialValue}`)
+            .getElementsByTagName('i').length
+        ) {
+          console.log({ counter, initialValue });
+          numberOfMoves += 2;
+          break;
+        }
+      }
+    }
+
+    if (
+      !Math.abs(
+        Math.floor(this.mainStone / this.boardSize) -
+          Math.floor(boxID / this.boardSize)
+      )
+    ) {
+      for (initialValue; initialValue != boxID; initialValue--) {
+        if (
+          document
+            .getElementById(`box${initialValue}`)
+            .getElementsByTagName('i').length
+        ) {
+          console.log({ counter, initialValue });
+          numberOfMoves += 2;
+          break;
+        }
+      }
+    }
+
+    (<any>(
+      document.getElementById(`box${boxID}`)
+    )).firstChild.innerHTML = numberOfMoves;
   }
 
   endGameWindowOpen(winningStatus: boolean = true) {
