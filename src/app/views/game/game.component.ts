@@ -28,6 +28,7 @@ export class GameComponent implements OnInit {
   boardSizeSquare: number;
   wallPositions: Array<number> = [];
   gameStart: boolean = !this._router.isActive('game/multiplayer', true);
+  exitButtonControl: boolean = !this._router.isActive('game/multiplayer', true);
   playerID: number = Math.floor(Math.random() * 100000) + 1000;
 
   ngOnInit(): void {
@@ -70,6 +71,10 @@ export class GameComponent implements OnInit {
         }
       });
     }
+  }
+
+  refresh() {
+    window.location.reload();
   }
 
   motionAreaControl(boxID: number): boolean {

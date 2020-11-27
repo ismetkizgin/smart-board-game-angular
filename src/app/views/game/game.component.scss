@@ -65,6 +65,20 @@
       background-size: contain;
     }
   }
+  &__button{
+    font-size: 30px;
+    color: rgb(207, 201, 201);
+    width: 40px;
+    float: left;
+    height: 43px;
+    text-align: center;
+    cursor: pointer;
+  }
+  &__buttons{
+    position: absolute;
+    right: 5px;
+    top: 3px;
+  }
 }
 .col{
   padding: 0!important;

@@ -2,7 +2,18 @@
 
 <ng-template #board>
     <div class="board__bg-image mt-0 pt-4">
-        <div class="container board">
+        <span class="board__buttons">
+            <a class="bg-white board__button rounded-circle" [routerLink]="['']"><i 
+                class="fas fa-home m-auto"></i></a>
+            <a class="ml-3 bg-white board__button rounded-circle" (click)="refresh()"><i
+                    class="fas fa-sync-alt m-auto"></i></a>
+            <ng-container *ngIf="!exitButtonControl; then exitButton"></ng-container>
+            <ng-template #exitButton>
+                <a class="ml-3 bg-white board__button rounded-circle" (click)="refresh()"><i
+                        class="fas fa-sign-out-alt"></i></a>
+            </ng-template>
+        </span>
+        <div class="container board mt-4">
             <ng-container *ngIf="boardSizeArray.length % 2 == 0; then evenNumber else oddNumber"></ng-container>
             <ng-template #oddNumber>
                 <div class="row" *ngFor="let vertical of boardSizeArray">
@@ -25,13 +36,14 @@
                         (click)="onSubmit((vertical * boardSizeArray.length + horizontal))">
                         <span class="board__stone board__stone__red p-3"
                             *ngIf="stonePositions.indexOf((vertical * boardSizeArray.length + horizontal)) != -1"></span>
+                        <i class="board__box__wall"
+                            *ngIf="wallPositions.indexOf((vertical * boardSizeArray.length + horizontal)) != -1"></i>
                     </div>
                 </div>
             </ng-template>
         </div>
     </div>
 </ng-template>
-
 <ng-template #multiPlayerScreen>
     <app-multiplayer-screen></app-multiplayer-screen>
 </ng-template>
