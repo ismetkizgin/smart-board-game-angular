@@ -222,7 +222,7 @@ export class GameComponent implements OnInit {
     ) {
       for (
         initialValue;
-        initialValue != boxID;
+        initialValue != counter;
         initialValue -= this.boardSize
       ) {
         if (
@@ -243,7 +243,7 @@ export class GameComponent implements OnInit {
           Math.floor(boxID / this.boardSize)
       )
     ) {
-      for (initialValue; initialValue != boxID; initialValue--) {
+      for (initialValue; initialValue != counter; initialValue--) {
         if (
           document
             .getElementById(`box${initialValue}`)
