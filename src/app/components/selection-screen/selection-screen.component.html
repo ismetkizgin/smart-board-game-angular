@@ -1,6 +1,6 @@
-<div class="m-auto selection__bg-color shadow-lg pt-3">
+<div class="m-auto selection__bg-color shadow-lg pt-3" id="container">
     <div class="row m-auto">
-        <div class="col-3">
+        <div class="col-sm-3 col-5 mb-2 mx-auto">
             <a [routerLink]="[ '/game/5/3']">
                 <div class="btn selection__btnSelection">
                     <i class="fas fa-bahai"></i>
@@ -8,7 +8,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-3">
+        <div class="col-sm-3 col-5 mb-2 mx-auto">
             <a [routerLink]="[ '/game/7/5']">
                 <div class="btn selection__btnSelection">
                     <i class="fas fa-angry"></i>
@@ -16,7 +16,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-3">
+        <div class="col-sm-3 col-5 mb-2 mx-auto">
             <a [routerLink]="[ '/game/9/10']">
                 <div class="btn selection__btnSelection">
                     <i class="fas fa-biohazard "></i>
@@ -24,7 +24,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-3">
+        <div class="col-sm-3 col-5 mb-2 mx-auto">
             <a (click)="creativeFormToggle()">
                 <div class="btn selection__btnSelection">
                     <i class="fas fa-plus-circle"></i>
@@ -33,11 +33,11 @@
             </a>
         </div>
     </div>
-    <div class="pt-3">
+    <div>
         <form *ngIf="creativeFormShowHide">
-            <div class="row selection__form-inputs">
-                <div class="col-6 form-group">
-                    <mat-form-field appearance="outline" class="w-100 ml-1">
+            <div class="row mt-3 selection__form-inputs m-auto">
+                <div class="col-sm-6 col-12 mb-2 form-group">
+                    <mat-form-field appearance="outline" class="w-100">
                         <mat-label>{{ 'Board Size' | translate }}</mat-label>
                         <select matNativeControl name="BoardSize" #BoardSize="ngModel" [(ngModel)]="_model.BoardSize"
                             required>
@@ -52,7 +52,7 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <div class="col-6 form-group">
+                <div class="col-sm-6 col-12 mb-2 form-group">
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>{{ 'Stone Count' | translate }}</mat-label>
                         <input matInput type="text" placeholder="{{ 'Enter Stone Count' | translate }}" pattern="^[3-9]"

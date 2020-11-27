@@ -2,15 +2,24 @@
   &__bg-color {
     background-color: rgb(230, 133, 42);
     border: solid 2px white;
-    width: 330px;
   }
-  &__form-inputs {
-    width: 350px;
+  @media screen and (max-width:576px){
+    &__bg-color{
+      max-width: 255px;
+    }
+    &__form-inputs{
+      max-width: 210px;
+    }
+  }
+  @media screen and (min-width:577px){
+    &__bg-color{
+      min-width: 460px;
+    }
   }
   &__btnSelection {
     background-color: rgb(235, 131, 28);
-    height: 55px;
-    width: 55px;
+    height: 75px;
+    width: 85px;
     border: solid 1px gray;
     &:hover {
       background-color: rgb(255, 136, 16);
@@ -25,13 +34,12 @@
     }
   }
   &__p-tag{
-    font-size: small;
-	  margin-left: -8px;
-	  margin-top: -3px;
+    font-size: medium;
+    color: white;
   }
 }
 .fas {
-	font-size: 30px;
+	font-size: 40px;
 }
 .fa-bahai {
 	color: rgb(252, 193, 0);
