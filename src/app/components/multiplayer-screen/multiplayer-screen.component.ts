@@ -20,7 +20,9 @@ export class MultiplayerScreenComponent implements OnInit {
     this._socket.emit('ready', this.playerID);
     console.log('hello word');
   }
+
   notReady() {
     this.readyControl = false;
+    this._socket.emit('cancel', this.playerID);
   }
 }
