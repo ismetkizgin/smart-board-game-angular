@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/ismetkizgin/smart-board-game-angularjs/compare/v1.3.0...v1.4.0) (2020-11-27)
+
+
+### Features
+
+* added exit button for multi user mode ([59731d0](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/59731d047393366f2bff79f94283edafab06e20e))
+* added game page buttons design ([35d99a7](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/35d99a76beca1f2cfd97cd4f49beb0a9ec97a3e3))
+* creative mode activated ([7155664](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/7155664076e9d1f6762999e2fb2969d0c477d9b0))
+* multiplayer cancel button is activated ([655e083](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/655e0832bbb2a01a15dca2c6e5ba2b347e90d5eb))
+
+
+### Bug Fixes
+
+* faulty right space ([1107f63](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/1107f63944f54427f1ae5830000c26ca808353f1))
+
 ## [1.3.0](https://github.com/ismetkizgin/smart-board-game-angularjs/compare/v1.2.0...v1.3.0) (2020-11-27)
 
 
