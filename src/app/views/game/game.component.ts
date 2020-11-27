@@ -28,7 +28,7 @@ export class GameComponent implements OnInit {
   boardSizeSquare: number;
   wallPositions: Array<number> = [];
   gameStart: boolean = !this._router.isActive('game/multiplayer', true);
-  playerID: number = Math.floor(Math.random() * 100000) + 1000;
+  playerID: number;
 
   ngOnInit(): void {
     this.boardSize = parseInt(
@@ -271,5 +271,9 @@ export class GameComponent implements OnInit {
         window.location.reload();
       }
     });
+  }
+
+  setPlayerID(playerID: number) {
+    this.playerID = playerID;
   }
 }

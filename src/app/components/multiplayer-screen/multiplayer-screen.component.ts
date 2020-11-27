@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { SocketService } from '../../utils';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-multiplayer-screen',
@@ -8,6 +8,7 @@ import { SocketService } from '../../utils';
 })
 export class MultiplayerScreenComponent implements OnInit {
   constructor(private _socketService: SocketService) {}
+  @Output() PlayerID = new EventEmitter();
 
   playerID: number = Math.floor(Math.random() * 100000) + 1000;
   _socket = this._socketService.connection;
@@ -18,7 +19,7 @@ export class MultiplayerScreenComponent implements OnInit {
   ready() {
     this.readyControl = true;
     this._socket.emit('ready', this.playerID);
-    console.log('hello word');
+    this.PlayerID.emit(this.playerID);
   }
 
   notReady() {

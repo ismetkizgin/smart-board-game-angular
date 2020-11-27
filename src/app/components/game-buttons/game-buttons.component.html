@@ -1,11 +1,6 @@
 <span class="board__buttons">
-    <a class="bg-white board__button rounded-circle" [routerLink]="['']"><i 
-        class="fas fa-home m-auto"></i></a>
-    <a class="ml-3 bg-white board__button rounded-circle" (click)="refresh()"><i
-            class="fas fa-sync-alt m-auto"></i></a>
-    <ng-container *ngIf="!exitButtonControl; then exitButton"></ng-container>
-    <ng-template #exitButton>
-        <a class="ml-3 bg-white board__button rounded-circle" (click)="refresh()"><i
-                class="fas fa-sign-out-alt"></i></a>
-    </ng-template>
+    <a class="bg-white board__button rounded-circle" [routerLink]="['']"><i class="fas fa-home m-auto"></i></a>
+    <a class="ml-3 bg-white board__button rounded-circle" (click)="refresh()"><i class="fas fa-sync-alt m-auto"></i></a>
+    <a *ngIf="!exitButtonControl" class="ml-3 bg-white board__button rounded-circle" (click)="getOutGame()"><i
+            class="fas fa-sign-out-alt"></i></a>
 </span>

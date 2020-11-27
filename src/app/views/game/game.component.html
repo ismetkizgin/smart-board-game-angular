@@ -2,7 +2,7 @@
 
 <ng-template #board>
     <div class="board__bg-image mt-0 pt-4">
-        <app-game-buttons></app-game-buttons>
+        <app-game-buttons [playerID]="playerID"></app-game-buttons>
         <div class="container board mt-4">
             <ng-container *ngIf="boardSizeArray.length % 2 == 0; then evenNumber else oddNumber"></ng-container>
             <ng-template #oddNumber>
@@ -35,5 +35,5 @@
     </div>
 </ng-template>
 <ng-template #multiPlayerScreen>
-    <app-multiplayer-screen></app-multiplayer-screen>
+    <app-multiplayer-screen (PlayerID)="setPlayerID($event)"></app-multiplayer-screen>
 </ng-template>
