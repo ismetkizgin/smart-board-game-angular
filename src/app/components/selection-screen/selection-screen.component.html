@@ -34,13 +34,13 @@
         </div>
     </div>
     <div>
-        <form *ngIf="creativeFormShowHide" class="mt-4">
+        <form *ngIf="creativeFormShowHide" #creativeForm='ngForm' (ngSubmit)="onSubmit(creativeForm)" class=" mt-4">
             <div class="row mt-3 selection__form-inputs m-auto">
                 <div class="col-sm-6 col-12 mb-2 form-group">
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>{{ 'Board Size' | translate }}</mat-label>
-                        <select matNativeControl name="BoardSize" #BoardSize="ngModel" [(ngModel)]="_model.BoardSize"
-                            required>
+                        <select matNativeControl #BoardSize="ngModel" [(ngModel)]="_model.BoardSize"
+                            (change)='onSelectBoardSize(BoardSize.value)' name="BoardSize" required>
                             <option value="5">5x5</option>
                             <option value="6">6x6</option>
                             <option value="7">7x7</option>
@@ -54,19 +54,22 @@
                 </div>
                 <div class="col-sm-6 col-12 mb-2 form-group">
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>{{ 'Stone Count' | translate }}</mat-label>
-                        <input matInput type="text" placeholder="{{ 'Enter Stone Count' | translate }}" pattern="^[3-9]"
-                            name="BoardStoneCount" #BoardStoneCount="ngModel" [(ngModel)]="_model.BoardStoneCount"
+                        <mat-label>{{ 'Number of Stone' | translate }}</mat-label>
+                        <select matNativeControl #StoneCount="ngModel" name="StoneCount" [(ngModel)]="_model.StoneCount"
                             required>
-                        <mat-error *ngIf="BoardStoneCount.invalid&&BoardStoneCount.touched">
-                            {{ 'Stone Count field must be filled' | translate }}</mat-error>
+                            <option *ngFor="let item of stoneNumbers" [value]="item">
+                                {{ item }}
+                            </option>
+                        </select>
+                        <mat-error *ngIf="BoardSize.invalid&&BoardSize.touched">
+                            {{ 'The number of stones should be chosen' | translate }}
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-12 form-group">
-                    <a class="btn btnGame btn-warning border mt-3 w-100"
-                        [routerLink]="['/game', _model.BoardSize, _model.BoardStoneCount]"><i
+                    <button type="submit" class="btn btnGame btn-warning border mt-3 w-100"><i
                             class="far fa-play-circle"></i>
-                        {{ 'Start Game' | translate }}</a>
+                        {{ 'Start Game' | translate }}</button>
                 </div>
             </div>
         </form>

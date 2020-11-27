@@ -1,2 +1,2 @@
 export * from './language/language.service';
-export * from './socket/socket.service';
+export * from './services';

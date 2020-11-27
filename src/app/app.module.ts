@@ -12,7 +12,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { LanguageService, SocketService } from './utils';
+import {
+  LanguageService,
+  SocketService,
+  GameModeControlService,
+} from './utils';
 import {
   SplashScreenComponent,
   SelectionScreenComponent,
@@ -53,7 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     BrowserAnimationsModule,
   ],
-  providers: [LanguageService, SocketService],
+  providers: [LanguageService, SocketService, GameModeControlService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
