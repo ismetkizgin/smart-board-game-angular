@@ -15,5 +15,9 @@ export class SelectionScreenComponent implements OnInit {
 
   creativeFormToggle(){
     this.creativeFormShowHide = !this.creativeFormShowHide;
+    if(this.creativeFormShowHide)
+    document.getElementById("container").style.cssText = 'margin-top:80px !important'
+    else
+    document.getElementById("container").removeAttribute('style')
   }
 }
