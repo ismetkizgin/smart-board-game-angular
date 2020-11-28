@@ -1,17 +1,23 @@
 {
+  "Back": "Back",
   "Board Size": "Board Size",
+  "Cancel": "Cancel",
   "Choose board size": "Choose board size",
   "Creative": "Creative",
   "Easy": "Easy",
-  "Enter Stone Count": "Enter Stone Count",
   "Hard": "Hard",
   "Main Menu": "Main Menu",
   "Medium": "Medium",
+  "Number of Stone": "Number of Stone",
   "Play Again": "Play Again",
+  "Please fill in the required fields": "Please fill in the required fields !",
   "ProjectName": "Smart Board Game",
+  "Ready": "Ready",
   "Single Player": "Single Player",
   "Start Game": "Start Game",
-  "Stone Count": "Stone Count",
-  "Stone Count field must be filled": "Stone Count field must be filled !",
-  "Two Players": "Two Players"
+  "The number of stones should be chosen": "The number of stones should be chosen",
+  "Two Players": "Two Players",
+  "Waiting for Other Player": "Waiting for Other Player !",
+  "You Lost !": "You Lost !",
+  "You Won !": "You Won !"
 }

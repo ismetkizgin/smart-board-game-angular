@@ -1,17 +1,23 @@
 {
+  "Back": "Geri",
   "Board Size": "Tahta Boyutu",
+  "Cancel": "İptal",
   "Choose board size": "Tahta Boyutunu Seçin",
   "Creative": "Yaratıcı",
   "Easy": "Kolay",
-  "Enter Stone Count": "Taş Sayısını Girin",
   "Hard": "Zor",
   "Main Menu": "Ana menü",
   "Medium": "Orta",
+  "Number of Stone": "Taş Sayısı",
   "Play Again": "Tekrar oyna",
+  "Please fill in the required fields": "Lütfen gerekli alanları doldurun !",
   "ProjectName": "Akıllı Tahta Oyunu",
+  "Ready": "Hazır",
   "Single Player": "Tek Oyuncu",
   "Start Game": "Oyuna Başla",
-  "Stone Count": "Taş Sayısı",
-  "Stone Count field must be filled": "Taş Sayısı alanı doldurulmalıdır !",
-  "Two Players": "İki Oyuncu"
+  "The number of stones should be chosen": "Taş sayısı seçilmelidir !",
+  "Two Players": "İki Oyuncu",
+  "Waiting for Other Player": "Diğer Oyuncuyu Bekleniyor...",
+  "You Lost !": "Kaybettin !",
+  "You Won !": "Kazandın !"
 }
