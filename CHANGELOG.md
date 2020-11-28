@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/ismetkizgin/smart-board-game-angularjs/compare/v1.4.0...v1.4.1) (2020-11-28)
+
+
+### Bug Fixes
+
+* fix for language pack content ([a86fe3b](https://github.com/ismetkizgin/smart-board-game-angularjs/commit/a86fe3b46da645d3ac380a7b84cd18f34f325675))
+
 ## [1.4.0](https://github.com/ismetkizgin/smart-board-game-angularjs/compare/v1.3.0...v1.4.0) (2020-11-27)
 
 
