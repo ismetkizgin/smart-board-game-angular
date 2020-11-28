@@ -2,6 +2,8 @@
 
 Deploy methods of Smart Board Game project are given below.
 
+The multiplayer mode is provided with the [socket.io project](https://github.com/ismetkizgin/socket-io-nodejs).
+
 ### Project Publishing Instructions
 The project can be published in two different ways.
 * Docker
