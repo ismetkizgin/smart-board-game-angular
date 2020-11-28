@@ -1,27 +1,53 @@
-# SmartBoardGame
+# Smart Board Game Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
+Deploy methods of Smart Board Game project are given below.
 
-## Development server
+### Project Publishing Instructions
+The project can be published in two different ways.
+* Docker
+* NPM
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+#### Installation with Docker
+To publish the project on Docker, go to the project directory and write the following codes;
 
-## Code scaffolding
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  # deploy project with docker
+  $ docker-compose up
 
-## Build
+  # install docker database backup
+  $ cat <sql_filename> | docker exec -i <container_name> mysql -u root --password=root <database_name>
+  
+  # compile docker files
+  $ docker-compose build
+  
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+#### Installation with NPM
+To publish the project in NPM, go to the project directory and write the following codes;
 
-## Running unit tests
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  # package install
+  $ npm install
 
-## Running end-to-end tests
+  # project start
+  $ npm start
+  
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Running the Project as a Developer
+As a developer, to start the project and do the test operations, first go to the project directory and install the packages, then give the necessary command to start the mode.
 
-## Further help
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  # package install
+  $ npm install
+
+  # project start
+  $ npm run start:dev
+  
+```
+
+## Useful resources
+* [Changelog](CHANGELOG.md)
